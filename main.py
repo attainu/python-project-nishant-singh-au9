@@ -139,10 +139,10 @@ class swiggy():
                             dic["Paneer Tikka"] += inp1
                     if int(inp) == 3:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
-                        if "Mix Veg" not in dic:
-                            dic["Mix Veg"] = inp1
+                        if "Mix Veg      " not in dic:
+                            dic["Mix Veg      "] = inp1
                         else:
-                            dic["Mix Veg"] += inp1
+                            dic["Mix Veg      "] += inp1
                     if int(inp) == 4:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Malai Kofta" not in dic:
@@ -206,10 +206,10 @@ class swiggy():
                             dic["Italian Sandwich"] += inp1
                     if int(inp) == 5:
                         inp1 = int(input("HOW MANY DO YOU WANT: ")) 
-                        if "Pizza Puff" not in dic:
-                            dic["Pizza Puff"] = inp1
+                        if "Pizza Puff     " not in dic:
+                            dic["Pizza Puff     "] = inp1
                         else:
-                            dic["Pizza Puff"] += inp1
+                            dic["Pizza Puff     "] += inp1
                     
 
                 except:
@@ -248,10 +248,10 @@ class swiggy():
                             dic["Veg Pizza"] += inp1
                     if int(inp) == 3:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
-                        if "Garlic Bread" not in dic:
-                            dic["Garlic Bread"] = inp1
+                        if "Veg Pizza    " not in dic:
+                            dic["Veg Pizza    "] = inp1
                         else:
-                            dic["Garlic Bread"] += inp1
+                            dic["Veg Pizza    "] += inp1
                     if int(inp) == 4:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Cheese Blast Pizza" not in dic:
@@ -286,15 +286,15 @@ class swiggy():
             print('\t'*2, i.upper(),'\t'*4, dic[i])
         print('\t'+"-"*68)
         print('\t'*2,"  ","TOTAL", "\t"*4,s)
-        if s > 300:
-            s -= s * 0.15
-            print('\t'*2,"  ","DISCOUNT", "\t"*4,"15%")
+        if s > 500:
+            s -= s * 0.20
+            print('\t'*2,"  ","DISCOUNT", "\t"*4,"20%")
             print('\t'+"-"*68)
             print('\t'*2,"  ","TO PAY", "\t"*4,s)
             
-        elif s > 500:
-            s -= s * 0.20
-            print('\t'*2,"  ","DISCOUNT", "\t"*4,"20%")
+        elif s > 300:
+            s -= s * 0.15
+            print('\t'*2,"  ","DISCOUNT", "\t"*4,"15%")
             print('\t'+"-"*68)
             print('\t'*2,"  ","TO PAY", "\t"*4,s)
         print("\n                      P(PAY)    (M) MAIN MENU    (E) EXIT")
@@ -471,11 +471,11 @@ class swiggy():
 
                                 if int(w) == 3:
                                     print("="*86)
-                                    print("ITEM -","Mix Veg")
-                                    print("OLD PRICE -", Biraj_International["Mix Veg"])
+                                    print("ITEM -","Mix Veg      ")
+                                    print("OLD PRICE -", Biraj_International["Mix Veg      "])
                                     e = input("ENTER NEW PRICE - ").upper()
                                     print("PRICE UPDATED")
-                                    Biraj_International["Mix Veg"] = e
+                                    Biraj_International["Mix Veg      "] = e
                                     print("="*86)
 
                                 if int(w) == 4:
@@ -578,11 +578,11 @@ class swiggy():
                                 
                                 if int(w) == 5:
                                     print("="*86)
-                                    print("ITEM -","Pizza Puff")
-                                    print("OLD PRICE -", Grill_Inn["Pizza Puff"])
+                                    print("ITEM -","Pizza Puff     ")
+                                    print("OLD PRICE -", Grill_Inn["Pizza Puff     "])
                                     e = input("ENTER NEW PRICE - ").upper()
                                     print("PRICE UPDATED")
-                                    Grill_Inn["Pizza Puff"] = e
+                                    Grill_Inn["Pizza Puff     "] = e
                                     print("="*86)
                                     
                             except:
@@ -639,11 +639,11 @@ class swiggy():
 
                                 if int(w) == 2:
                                     print("="*86)
-                                    print("ITEM -","Veg Pizza")
-                                    print("OLD PRICE -", Pizzaria["Veg Pizza"])
+                                    print("ITEM -","Veg Pizza    ")
+                                    print("OLD PRICE -", Pizzaria["Veg Pizza    "])
                                     e = input("ENTER NEW PRICE - ").upper()
                                     print("PRICE UPDATED")
-                                    Pizzaria["Veg Pizza"] = e
+                                    Pizzaria["Veg Pizza    "] = e
                                     print("="*86)
 
                                 if int(w) == 3:
