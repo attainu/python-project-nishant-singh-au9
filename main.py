@@ -1,18 +1,17 @@
-import time
+from random import randint
 class swiggy():
     def __init__(self):
         print()
         print("#"*30 ,"HELLO, WELCOME TO SWIGGY", "#"*30)
         
-        global res, Biraj_International, Grill_Inn, Pizzaria, dic, order_no, history
-        Biraj_International = {"Paneer Chilli" : 170, "Paneer Tikka" : 200, "Mix Veg      " : 140, "Malai Kofta" : 180, "Shahi Kofta" : 180}
+        global res, Biraj_International, Grill_Inn, Pizzaria, dic, history
+        Biraj_International = {"Paneer Chilli" : 170, "Paneer Tikka" : 250, "Mix Veg      " : 140, "Malai Kofta" : 180, "Shahi Kofta" : 180}
         Grill_Inn = {"Surprise Burger" : 129, "Grilled Sandwich" : 99, "Paneer Wrap" : 169, "Italian Sandwich" : 159, "Pizza Puff     " : 129}
         Pizzaria = {"Margherita Pizza" : 90, "Veg Pizza    " : 90, "Garlic Bread" : 99, "Cheese Blast Pizza" : 289, "Golden Corn Pizza" : 79}
 
 
         res = {"BIRAJ INTERNATIONAL": Biraj_International, "GRILL INN": Grill_Inn, "PIZZARIA": Pizzaria}
         dic = {}
-        order_no = 1
         history = {}
 
 
@@ -42,6 +41,7 @@ class swiggy():
                 print("="*86)
                 print("THANKYOU FOR USING OUR SERVICES, HOPE TO SEE YOU AGAIN")
                 print("="*86)
+                exit()
                 break
             elif inp1 == 'H':
                 self.History(history)
@@ -109,6 +109,7 @@ class swiggy():
         print("\n                     (M) MAIN MENU    (E) EXIT    (C)CART")
         print("="*86)
         dic = {}
+        counter = 0
         qu = 0
         while True:
             inp = input("SELECT YOUR DESIRED CHOICE: ").upper()
@@ -121,8 +122,15 @@ class swiggy():
                 print("="*86)
                 exit()
             if inp == "C":
-                self.cart(dic,Biraj_International)
-                break
+                if counter < 4:
+                    self.cart(dic,Biraj_International)
+                    break
+                else:
+                    print("="*86)
+                    print("RESTAURANT CANNOT PROCESS MORE THAN 3 ITEMS FOR ONE ORDER")
+                    print("PLEASE TRY AGAIN")
+                    self.main_menu()
+                    break
             try:
                 if qu <= 3:
                     if int(inp) == 1:
@@ -131,41 +139,47 @@ class swiggy():
                             dic["Paneer Chilli"] = inp1
                         else:
                             dic["Paneer Chilli"] += inp1
+                        counter += inp1
                     if int(inp) == 2:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Paneer Tikka" not in dic:
                             dic["Paneer Tikka"] = inp1
                         else:
                             dic["Paneer Tikka"] += inp1
+                        counter += inp1
                     if int(inp) == 3:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Mix Veg      " not in dic:
                             dic["Mix Veg      "] = inp1
                         else:
                             dic["Mix Veg      "] += inp1
+                        counter += inp1
                     if int(inp) == 4:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Malai Kofta" not in dic:
                             dic["Malai Kofta"] = inp1
                         else:
                             dic["Malai Kofta"] += inp1
+                        counter += inp1
                     if int(inp) == 5:
                         inp1 = int(input("HOW MANY DO YOU WANT: ")) 
                         if "Shahi Kofta" not in dic:
                             dic["Shahi Kofta"] = inp1
                         else:
                             dic["Shahi Kofta"] += inp1
+                        counter += inp1
                 else:
                     print("RESTURANT CANNOT PROCESS MORE THAN THREE ITEMS A TIME")   
 
             except:
-                print("INVALID INPUT PLEASE TRY AGAIN")
+                print("INVALID INPUT PLEASE TRY AGAIN--")
 
     def Grill_Inn(self):
             print()
             print("\n                     (M) MAIN MENU    (E) EXIT    (C)CART")
             print("="*86)
             dic = {}
+            counter = 0
             while True:
                 inp = input("SELECT YOUR DESIRED CHOICE: ").upper()
                 if inp == 'M':
@@ -177,8 +191,15 @@ class swiggy():
                     print("="*86)
                     exit()
                 if inp == "C":
-                    self.cart(dic,Grill_Inn)
-                    break
+                    if counter < 4:
+                        self.cart(dic,Grill_Inn)
+                        break
+                    else: 
+                        print("="*86)
+                        print("RESTAURANT CANNOT PROCESS MORE THAN 3 ITEMS FOR ONE ORDER")
+                        print("PLEASE TRY AGAIN")
+                        self.main_menu()
+                        break
                 try:
                     if int(inp) == 1:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
@@ -186,30 +207,35 @@ class swiggy():
                             dic["Surprise Burger"] = inp1
                         else:
                             dic["Surprise Burger"] += inp1
+                        counter += inp1
                     if int(inp) == 2:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Grilled Sandwich" not in dic:
                             dic["Grilled Sandwich"] = inp1
                         else:
                             dic["Grilled Sandwich"] += inp1
+                        counter += inp1
                     if int(inp) == 3:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Paneer Wrap" not in dic:
                             dic["Paneer Wrap"] = inp1
                         else:
                             dic["Paneer Wrap"] += inp1
+                        counter += inp1
                     if int(inp) == 4:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Italian Sandwich" not in dic:
                             dic["Italian Sandwich"] = inp1
                         else:
                             dic["Italian Sandwich"] += inp1
+                        counter += inp1
                     if int(inp) == 5:
                         inp1 = int(input("HOW MANY DO YOU WANT: ")) 
                         if "Pizza Puff     " not in dic:
                             dic["Pizza Puff     "] = inp1
                         else:
                             dic["Pizza Puff     "] += inp1
+                        counter += inp1
                     
 
                 except:
@@ -220,6 +246,7 @@ class swiggy():
             print("\n                     (M) MAIN MENU    (E) EXIT    (C)CART")
             print("="*86)
             dic = {}
+            counter = 0
             while True:
                 inp = input("SELECT YOUR DESIRED CHOICE: ").upper()
                 if inp == 'M':
@@ -231,8 +258,16 @@ class swiggy():
                     print("="*86)
                     exit()
                 if inp == "C":
-                    self.cart(dic, Pizzaria)
-                    break
+                    if counter < 4:
+                        self.cart(dic, Pizzaria)
+                        break
+                    else:
+                        print("="*86)
+                        print("RESTAURANT CANNOT PROCESS MORE THAN 3 ITEMS FOR ONE ORDER")
+                        print("PLEASE TRY AGAIN")
+                        self.main_menu()
+                        break
+                    
                 try:
                     if int(inp) == 1:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
@@ -240,30 +275,35 @@ class swiggy():
                             dic["Margherita Pizza"] = inp1
                         else:
                             dic["Margherita Pizza"] += inp1
+                        counter += inp1
                     if int(inp) == 2:
-                        inp1 = int(input("HOW MANY DO YOU WANT: "))
-                        if "Veg Pizza" not in dic:
-                            dic["Veg Pizza"] = inp1
-                        else:
-                            dic["Veg Pizza"] += inp1
-                    if int(inp) == 3:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Veg Pizza    " not in dic:
                             dic["Veg Pizza    "] = inp1
                         else:
                             dic["Veg Pizza    "] += inp1
+                        counter += inp1
+                    if int(inp) == 3:
+                        inp1 = int(input("HOW MANY DO YOU WANT: "))
+                        if "Garlic Bread" not in dic:
+                            dic["Garlic Bread"] = inp1
+                        else:
+                            dic["Garlic Bread"] += inp1
+                        counter += inp1
                     if int(inp) == 4:
                         inp1 = int(input("HOW MANY DO YOU WANT: "))
                         if "Cheese Blast Pizza" not in dic:
                             dic["Cheese Blast Pizza"] = inp1
                         else:
                             dic["Cheese Blast Pizza"] += inp1
+                        counter += inp1
                     if int(inp) == 5:
                         inp1 = int(input("HOW MANY DO YOU WANT: ")) 
                         if "Golden Corn Pizza" not in dic:
                             dic["Golden Corn Pizza"] = inp1
                         else:
                             dic["Golden Corn Pizza"] += inp1
+                        counter += inp1
 
                 except:
                     print("INVALID INPUT PLEASE TRY AGAIN")
@@ -275,6 +315,7 @@ class swiggy():
         print('\t'*2, "   ITEM","                            ", "QUANTITY")
         print('\t'+"-"*68)
         s = 0
+        order_no = randint(0,10000)
         if name == Biraj_International:
             d = "BIRAJ INTERNATIONAL"
         elif name == Grill_Inn:
@@ -283,7 +324,10 @@ class swiggy():
             d = "Pizzaria"
         for i in dic:
             s += name[i]*dic[i]
-            print('\t'*2, i.upper(),'\t'*4, dic[i])
+            if name == Biraj_International:
+                print('\t'*2, i.upper(),'\t'*4, dic[i])
+            else:
+                print('\t'*2, i.upper(),'\t'*3, dic[i])
         print('\t'+"-"*68)
         print('\t'*2,"  ","TOTAL", "\t"*4,s)
         if s > 500:
@@ -311,7 +355,7 @@ class swiggy():
             elif inp == 'E':
                 exit()
             else:
-                print("INVALID INPUT PLEASE TRY AGAIN")
+                print("INVALID INPUT PLEASE TRY AGAIN@")
 
     def payment(self, s):
         print()
@@ -417,8 +461,8 @@ class swiggy():
         print()
         print("="*86)
         while True:
-            inp = int(input("SELECT YOUR RESTURANT: "))
-            if inp == 1:
+            inp = input("SELECT YOUR RESTURANT: ")
+            if int(inp) == 1:
                 print("="*86)
                 print()
                 print("LOGIN SUCCESSFULL")
@@ -459,6 +503,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Biraj_International["Paneer Chilli"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 2:
                                     print("="*86)
@@ -468,6 +521,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Biraj_International["Paneer Tikka"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 3:
                                     print("="*86)
@@ -477,6 +539,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Biraj_International["Mix Veg      "] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 4:
                                     print("="*86)
@@ -486,6 +557,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Biraj_International["Malai Kofta"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
                                 
                                 if int(w) == 5:
                                     print("="*86)
@@ -495,6 +575,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Biraj_International["Shahi Kofta"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
                                     
                             except:
                                 print("INVALID INPUT PLAESE TRY AGAIN")
@@ -506,7 +595,7 @@ class swiggy():
                     else:
                         print("INVALID INPUT PLEASE TRY AGAIN")
 
-            elif inp == 2:
+            elif int(inp) == 2:
                 print("="*86)
                 print()
                 print("LOGIN SUCCESSFULL")
@@ -548,6 +637,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Grill_Inn["Surprise Burger"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 2:
                                     print("="*86)
@@ -557,6 +655,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Grill_Inn["Grilled Sandwich"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 3:
                                     print("="*86)
@@ -566,6 +673,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Grill_Inn["Paneer Wrap"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 4:
                                     print("="*86)
@@ -575,6 +691,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Grill_Inn["Italian Sandwich"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
                                 
                                 if int(w) == 5:
                                     print("="*86)
@@ -584,6 +709,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Grill_Inn["Pizza Puff     "] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
                                     
                             except:
                                 print("INVALID INPUT PLAESE TRY AGAIN")
@@ -595,7 +729,7 @@ class swiggy():
                     else:
                         print("INVALID INPUT PLEASE TRY AGAIN")
 
-            elif inp == 3:
+            elif int(inp) == 3:
                 print("="*86)
                 print()
                 print("LOGIN SUCCESSFULL")
@@ -615,8 +749,7 @@ class swiggy():
                             j = Pizzaria[i]
                             print("("+str(count)+")",i.upper(),"\t"*5,"price","\t","Rs","{:.2f}".format(float(j)))
                             count += 1
-                            print()
-                            print()
+                        print()
                         print("(M) MAIN MENU \n"
                         "(E) EXIT")
                         print("="*86)
@@ -636,6 +769,16 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Pizzaria["Margherita Pizza"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
+
 
                                 if int(w) == 2:
                                     print("="*86)
@@ -645,6 +788,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Pizzaria["Veg Pizza    "] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 3:
                                     print("="*86)
@@ -654,6 +806,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Pizzaria["Garlic Bread"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
 
                                 if int(w) == 4:
                                     print("="*86)
@@ -663,6 +824,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Pizzaria["Cheese Blast Pizza"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
                                 
                                 if int(w) == 5:
                                     print("="*86)
@@ -672,6 +842,15 @@ class swiggy():
                                     print("PRICE UPDATED")
                                     Pizzaria["Golden Corn Pizza"] = e
                                     print("="*86)
+                                    print("(M)MAIN MENU    E(EXIT)")
+                                    while True:
+                                        A = input().lower()
+                                        if A == 'm':
+                                            self.main_menu()
+                                        elif A == 'e':
+                                            exit()
+                                        else:
+                                            print("INVALID INPUT PLEASE TRY AGAIN")
                                     
                             except:
                                 print("INVALID INPUT PLAESE TRY AGAIN")
